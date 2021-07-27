@@ -11,14 +11,22 @@ const char code_to_name[60] = {
     'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
-    'R', 'E', 'B', 'T', ' ', ' ', ' ', ' ', ' ', ' ',
-    ' ', ';', '\'', ' ', ',', '.', '/', ' ', ' ', ' '};
+    'R', 'E', 'B', 'T', ' ', '-', '=', '[', ']', '\\',
+    ' ', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '};
 
 void set_keylog(uint16_t keycode, keyrecord_t *record) {
   char name = ' ';
   if (keycode < 60) {
     name = code_to_name[keycode];
   }
+  if (keycode == 24836) { name = 'a'; }
+  if (keycode == 25622) { name = 's'; }
+  if (keycode == 25095) { name = 'd'; }
+  if (keycode == 26633) { name = 'f'; }
+  if (keycode == 30733) { name = 'j'; }
+  if (keycode == 29198) { name = 'k'; }
+  if (keycode == 29711) { name = 'l'; }
+  if (keycode == 28979) { name = ';'; }
 
   // update keylog
   snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c",
